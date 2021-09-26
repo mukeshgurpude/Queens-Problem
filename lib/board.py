@@ -12,7 +12,7 @@ class Board:
 
   def __init__(self, size: int):
     self.__size = size
-    self.__board = [[0]*self.__size]*self.__size
+    self.__board = [[0 for i in range(self.size)] for j in range(self.size)]
     self.__marked = []
 
   def place(self, place: int) -> None:
@@ -27,6 +27,8 @@ class Board:
       Removes last added queen from the board
     '''
     if self.__marked:
+      row, col = self.get_point(place, self.size)
+      self.__board[row][col] = 0
       return self.__marked.pop()
     raise TypeError('No queens on the board...')
 
@@ -46,6 +48,16 @@ class Board:
     for row in self.__board:
       for place in row:
         yield place
+
+  def __repr__(self) -> str:
+    vis = ''
+    vis += '-'*(self.size*4+1) + '\n'
+    for row in self.__board:
+      for place in row:
+        vis += f'| {"1" if place == 1 else " "} '
+      vis += '|\n'
+      vis += '-'*(self.size*4+1) + '\n'
+    return vis
 
   @property
   def size(self):
