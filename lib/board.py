@@ -1,11 +1,11 @@
-from typing import List, Tuple
+from typing import List, Tuple, overload
 
 
 class Board:
   '''
-  Visualize a chess board of variable size
+    Visualize a chess board of variable size
   '''
-  
+
   __size: int = None
   __marked: List = None
   __board: List[List[int]] = None
@@ -21,6 +21,14 @@ class Board:
       raise TypeError(f'A queen is already placed on {place}: ({row}, {col})')
     self.__board[row][col] = 1
     self.__marked.append((row, col))
+
+  def remove(self, place: int) -> None:
+    '''
+      Removes last added queen from the board
+    '''
+    if self.__marked:
+      return self.__marked.pop()
+    raise TypeError('No queens on the board...')
 
   def is_safe(self, place: int):
     [row, col] = self.get_point(place, self.size)
@@ -42,6 +50,3 @@ class Board:
   @property
   def size(self):
     return self.__size
-
-if __name__ == '__main__':
-  b = Board(8)
