@@ -62,3 +62,7 @@ class Board:
   @property
   def size(self):
     return self.__size
+
+  @property
+  def positions(self):
+    return self.__marked
