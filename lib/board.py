@@ -1,4 +1,4 @@
-from typing import List, Tuple, overload
+from typing import List, Tuple
 
 
 class Board:
@@ -35,7 +35,7 @@ class Board:
   def is_safe(self, place: int):
     [row, col] = self.get_point(place, self.size)
     for marked in self.__marked:
-      if row == marked[0] or col == marked[1] or (row - marked[0] == col - marked[1]):
+      if row == marked[0] or col == marked[1] or (abs(row - marked[0]) == abs(col - marked[1])):
         return False
     return True
 

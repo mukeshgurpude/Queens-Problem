@@ -1,12 +1,12 @@
+import random
+from unittest import TestCase
 from lib.board import Board
 from lib.solver import solver
-import random
-from unittest import main, TestCase
 
 class SolverTest(TestCase):
   def setUp(self) -> None:
     super().setUp()
-    size = random.randint(3, 15)
+    size = random.randint(4, 15)
     self.start = random.randint(0, size)
     self.board = Board(size)
 
@@ -39,3 +39,8 @@ class SolverTest(TestCase):
       place = self.to_point(*i)
       self.assertTrue(self.board.is_safe(place))
       self.board.place(place)
+
+  def test_invalid_size(self):
+    invalid_sizes = range(1, 4)
+    for size in invalid_sizes:
+      self.assertFalse(solver(Board(size), 0))
