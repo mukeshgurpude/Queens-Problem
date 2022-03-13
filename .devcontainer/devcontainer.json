@@ -9,7 +9,6 @@
 		}
 	},
 
-	// Set *default* container specific settings.json values on container create.
 	"settings": { 
 		"python.pythonPath": "/usr/local/bin/python",
 		"python.languageServer": "Pylance",
@@ -26,7 +25,6 @@
 		"python.linting.pylintPath": "/usr/local/py-utils/bin/pylint"
 	},
 
-	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
 		"ms-python.python",
 		"ms-python.vscode-pylance"

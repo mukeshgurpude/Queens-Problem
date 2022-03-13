@@ -11,5 +11,7 @@ if __name__ == '__main__':
     size = int(sys.argv[1])
 
   board = Board(size)
-  solver(board, start)
-  print(board)
+  if(solver(board, start)):
+    print(board)
+  else:
+    print("No solution found")
